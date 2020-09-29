@@ -16,6 +16,8 @@
 		436B3293251D0BB40056B072 /* NextSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436B3292251D0BB40056B072 /* NextSwiftTests.swift */; };
 		436B329E251D0BB40056B072 /* NextSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436B329D251D0BB40056B072 /* NextSwiftUITests.swift */; };
 		436B32C2251FD6590056B072 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436B32C1251FD6590056B072 /* MapViewController.swift */; };
+		43B52B5B252374F2007B8FC3 /* PathRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B52B5A252374F2007B8FC3 /* PathRealm.swift */; };
+		43B52B632523750D007B8FC3 /* PathRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B52B622523750D007B8FC3 /* PathRepository.swift */; };
 		8B3BFC453235D21156E6A30E /* Pods_NextSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51DFB110983B509AB6195273 /* Pods_NextSwiftTests.framework */; };
 		B96B6EFFF1AC493D86A0B5FA /* Pods_NextSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D31F723785E62B64DC18D7 /* Pods_NextSwift.framework */; };
 /* End PBXBuildFile section */
@@ -56,6 +58,8 @@
 		436B329D251D0BB40056B072 /* NextSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextSwiftUITests.swift; sourceTree = "<group>"; };
 		436B329F251D0BB40056B072 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		436B32C1251FD6590056B072 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		43B52B5A252374F2007B8FC3 /* PathRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathRealm.swift; sourceTree = "<group>"; };
+		43B52B622523750D007B8FC3 /* PathRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathRepository.swift; sourceTree = "<group>"; };
 		51DFB110983B509AB6195273 /* Pods_NextSwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NextSwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BC01C20ED81BD9E87EFA4A2 /* Pods-NextSwift-NextSwiftUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NextSwift-NextSwiftUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NextSwift-NextSwiftUITests/Pods-NextSwift-NextSwiftUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A4E7ADEF03F8192D8D76231F /* Pods-NextSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NextSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NextSwift/Pods-NextSwift.debug.xcconfig"; sourceTree = "<group>"; };
@@ -116,13 +120,14 @@
 		436B327A251D0BB20056B072 /* NextSwift */ = {
 			isa = PBXGroup;
 			children = (
+				43B52B542523729D007B8FC3 /* DataBase */,
+				43B52B5325237289007B8FC3 /* Controllers */,
 				436B327B251D0BB20056B072 /* AppDelegate.swift */,
 				436B327D251D0BB20056B072 /* SceneDelegate.swift */,
 				436B3281251D0BB20056B072 /* Main.storyboard */,
 				436B3284251D0BB40056B072 /* Assets.xcassets */,
 				436B3286251D0BB40056B072 /* LaunchScreen.storyboard */,
 				436B3289251D0BB40056B072 /* Info.plist */,
-				436B32C1251FD6590056B072 /* MapViewController.swift */,
 			);
 			path = NextSwift;
 			sourceTree = "<group>";
@@ -143,6 +148,39 @@
 				436B329F251D0BB40056B072 /* Info.plist */,
 			);
 			path = NextSwiftUITests;
+			sourceTree = "<group>";
+		};
+		43B52B5325237289007B8FC3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				436B32C1251FD6590056B072 /* MapViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		43B52B542523729D007B8FC3 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				43B52B5925237498007B8FC3 /* RealmModel */,
+				43B52B582523743E007B8FC3 /* RealmRepository */,
+			);
+			path = DataBase;
+			sourceTree = "<group>";
+		};
+		43B52B582523743E007B8FC3 /* RealmRepository */ = {
+			isa = PBXGroup;
+			children = (
+				43B52B622523750D007B8FC3 /* PathRepository.swift */,
+			);
+			path = RealmRepository;
+			sourceTree = "<group>";
+		};
+		43B52B5925237498007B8FC3 /* RealmModel */ = {
+			isa = PBXGroup;
+			children = (
+				43B52B5A252374F2007B8FC3 /* PathRealm.swift */,
+			);
+			path = RealmModel;
 			sourceTree = "<group>";
 		};
 		5923C4E7247D025305E9B18A /* Frameworks */ = {
@@ -180,6 +218,7 @@
 				436B3275251D0BB20056B072 /* Frameworks */,
 				436B3276251D0BB20056B072 /* Resources */,
 				DCAF40D94654E0AEBDA38C34 /* [CP] Copy Pods Resources */,
+				9F9DF84AFC6C30F6081679AE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -218,6 +257,7 @@
 				436B3296251D0BB40056B072 /* Frameworks */,
 				436B3297251D0BB40056B072 /* Resources */,
 				59B70036A7B81F9B1A7A6DBF /* [CP] Copy Pods Resources */,
+				4E04B3413662A7CECC13D690 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -335,6 +375,26 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		4E04B3413662A7CECC13D690 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-NextSwift-NextSwiftUITests/Pods-NextSwift-NextSwiftUITests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NextSwift-NextSwiftUITests/Pods-NextSwift-NextSwiftUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		59B70036A7B81F9B1A7A6DBF /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -351,6 +411,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NextSwift-NextSwiftUITests/Pods-NextSwift-NextSwiftUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9F9DF84AFC6C30F6081679AE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-NextSwift/Pods-NextSwift-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NextSwift/Pods-NextSwift-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B343366912FF4FE33B8D5773 /* [CP] Check Pods Manifest.lock */ = {
@@ -396,6 +476,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43B52B632523750D007B8FC3 /* PathRepository.swift in Sources */,
+				43B52B5B252374F2007B8FC3 /* PathRealm.swift in Sources */,
 				436B327C251D0BB20056B072 /* AppDelegate.swift in Sources */,
 				436B327E251D0BB20056B072 /* SceneDelegate.swift in Sources */,
 				436B32C2251FD6590056B072 /* MapViewController.swift in Sources */,

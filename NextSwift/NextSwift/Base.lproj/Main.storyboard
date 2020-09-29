@@ -52,16 +52,16 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Map" id="cAi-aJ-555">
-                        <barButtonItem key="leftBarButtonItem" title="Track" id="V94-Z0-7uB">
+                        <barButtonItem key="leftBarButtonItem" title="NewTrack" id="V94-Z0-7uB">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="trackAction:" destination="Psc-qb-Xih" id="cu9-NG-ru5"/>
+                                <action selector="newTrackAction:" destination="Psc-qb-Xih" id="bcn-lH-2sc"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Current" id="Zy1-dR-SDJ">
+                        <barButtonItem key="rightBarButtonItem" title="StopTrack" id="Zy1-dR-SDJ">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="currentAction:" destination="Psc-qb-Xih" id="E1c-bS-6sX"/>
+                                <action selector="stopTrackAction:" destination="Psc-qb-Xih" id="wog-p7-cpP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
