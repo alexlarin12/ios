@@ -1,0 +1,6 @@
+framework module Pods_NextSwiftTests {
+  umbrella header "Pods-NextSwiftTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

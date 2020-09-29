@@ -1,0 +1,6 @@
+framework module Pods_NextSwift_NextSwiftUITests {
+  umbrella header "Pods-NextSwift-NextSwiftUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
