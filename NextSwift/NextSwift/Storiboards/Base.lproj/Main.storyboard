@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CMO-mY-zGR">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="cMI-wL-G2t">
+            <objects>
+                <navigationController id="CMO-mY-zGR" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="UPc-d8-fgy"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Fzh-Na-GXQ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="rhL-0z-kZz" kind="relationship" relationship="rootViewController" id="foO-Kx-2r9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VR2-Nc-52H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-923" y="748"/>
+        </scene>
+        <!--Launch-->
+        <scene sceneID="BbN-pk-stQ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Launch" id="SdM-xy-1o7" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wRw-99-sIL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="370" y="190"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="aiB-ih-0Y6">
+            <objects>
+                <viewController id="rhL-0z-kZz" customClass="MainViewController" customModule="NextSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sUt-U6-qKJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGu-h5-wyc">
+                                <rect key="frame" x="107" y="138" width="200" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="rJh-5Q-vk7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SavoyeLetPlain" family="Savoye LET" pointSize="30"/>
+                                <state key="normal" title="Показать карту">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="showMap:" destination="rhL-0z-kZz" eventType="touchUpInside" id="z9O-ZE-4CT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HXd-Pl-Xu2">
+                                <rect key="frame" x="107" y="286" width="200" height="48"/>
+                                <fontDescription key="fontDescription" name="SavoyeLetPlain" family="Savoye LET" pointSize="30"/>
+                                <state key="normal" title="Выйти из аккаунта">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="logOut:" destination="rhL-0z-kZz" eventType="touchUpInside" id="vL0-ff-9D0"/>
+                                    <segue destination="694-kR-b8B" kind="unwind" identifier="fromUserToUnwind" unwindAction="unwindSegueWithUnwindSegue:" id="PGy-9g-IBn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="gdD-PT-Qup"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="BGu-h5-wyc" firstAttribute="top" secondItem="gdD-PT-Qup" secondAttribute="top" constant="50" id="IGw-qF-uSh"/>
+                            <constraint firstItem="HXd-Pl-Xu2" firstAttribute="top" secondItem="BGu-h5-wyc" secondAttribute="bottom" constant="100" id="Oaw-7E-QuU"/>
+                            <constraint firstItem="HXd-Pl-Xu2" firstAttribute="width" secondItem="BGu-h5-wyc" secondAttribute="width" id="kNQ-kK-QtU"/>
+                            <constraint firstItem="BGu-h5-wyc" firstAttribute="centerX" secondItem="sUt-U6-qKJ" secondAttribute="centerX" id="tJK-cn-I69"/>
+                            <constraint firstItem="HXd-Pl-Xu2" firstAttribute="centerX" secondItem="BGu-h5-wyc" secondAttribute="centerX" id="uhJ-de-I0G"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="cko-7y-8RE"/>
+                    <connections>
+                        <segue destination="Gnh-pA-WRC" kind="show" identifier="toMap" id="rSg-3O-IYq"/>
+                        <segue destination="SdM-xy-1o7" kind="custom" identifier="toLaunch" customClass="RootSegue" customModule="NextSwift" customModuleProvider="target" id="yMm-bY-0GH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="89s-2d-fRH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="694-kR-b8B" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-152" y="748"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="GDF-gW-T6O">
+            <objects>
+                <viewController id="Gnh-pA-WRC" customClass="MapViewController" customModule="NextSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aW4-k6-pUt">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J14-YJ-T7O" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="wSi-fH-5op"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="wSi-fH-5op" firstAttribute="bottom" secondItem="J14-YJ-T7O" secondAttribute="bottom" id="LqR-TR-5bS"/>
+                            <constraint firstItem="wSi-fH-5op" firstAttribute="trailing" secondItem="J14-YJ-T7O" secondAttribute="trailing" id="SGC-hf-Jgc"/>
+                            <constraint firstItem="J14-YJ-T7O" firstAttribute="top" secondItem="wSi-fH-5op" secondAttribute="top" id="lB3-2F-Hn0"/>
+                            <constraint firstItem="J14-YJ-T7O" firstAttribute="leading" secondItem="wSi-fH-5op" secondAttribute="leading" id="pBy-zA-fRl"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="RsU-Aj-kMR">
+                        <leftBarButtonItems>
+                            <barButtonItem title="NewTrack" id="MZK-zO-9wn">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="newTrackAction:" destination="Gnh-pA-WRC" id="vKg-Ag-hbF"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="LogOut" id="jdc-5w-PLz">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <segue destination="KmI-oI-c7A" kind="unwind" unwindAction="unwindSegueWithUnwindSegue:" id="caK-fw-NNo"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                        <rightBarButtonItems>
+                            <barButtonItem title="StopTrack" id="WkN-P1-mVr">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="stopTrackAction:" destination="Gnh-pA-WRC" id="3EH-bc-8fv"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="LastTrack" id="aMD-gU-CYK">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="lastTrackAction:" destination="Gnh-pA-WRC" id="bhH-9A-w04"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="J14-YJ-T7O" id="yOG-Xg-RPG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kAa-Lb-gKH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="lo8-II-979">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Button"/>
+                </button>
+                <exit id="KmI-oI-c7A" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="997" y="748"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
