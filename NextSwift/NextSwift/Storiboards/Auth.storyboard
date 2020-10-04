@@ -163,7 +163,7 @@
                         <outlet property="passwordTextField" destination="dI6-jd-HpS" id="avt-I1-PII"/>
                         <segue destination="MDn-xH-U0b" kind="show" identifier="onRecovery" id="Tgy-UQ-XEm"/>
                         <segue destination="W25-Y5-BaH" kind="presentation" identifier="toMain" customClass="RootSegue" customModule="NextSwift" customModuleProvider="target" id="QkV-3c-mRB"/>
-                        <segue destination="ngH-Xs-IP5" kind="show" identifier="signUo" id="0Ju-S5-qA7"/>
+                        <segue destination="ngH-Xs-IP5" kind="show" identifier="signUp" id="0Ju-S5-qA7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FSi-3b-cFd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
