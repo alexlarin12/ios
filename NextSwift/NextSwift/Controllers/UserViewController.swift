@@ -44,7 +44,8 @@ class UserViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        textFieldState()
+        addObservers()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -58,5 +59,25 @@ class UserViewController: UIViewController {
     @IBAction func unwindSegue(unwindSegue: UIStoryboardSegue){
         UserDefaults.standard.set(false, forKey: "isLogin")
     }
-
+    func textFieldState() {
+        passwordTextField.isSecureTextEntry = true
+        passwordTextField.autocorrectionType = .no
+        loginTextField.autocorrectionType = .no
+    }
+    // Подписка на уведомления (приложение не активно - активно)
+    func addObservers() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(hideTextFields), name: UIApplication.willResignActiveNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(showTextFields), name: UIApplication.didBecomeActiveNotification, object: nil)
+    }
+    // фон TextField - черный
+    @objc func hideTextFields() {
+        passwordTextField.backgroundColor = .black
+        loginTextField.backgroundColor = .black
+    }
+    // фон TextField - белый
+    @objc func showTextFields() {
+        passwordTextField.backgroundColor = .white
+        loginTextField.backgroundColor = .white
+    }
 }
