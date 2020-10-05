@@ -8,6 +8,7 @@
 import UIKit
 import GoogleMaps
 import CoreLocation
+import RealmSwift
 
 class MapViewController: UIViewController {
     
@@ -19,11 +20,14 @@ class MapViewController: UIViewController {
     var route: GMSPolyline?
     // свойство для хранения пути:
     var routePath: GMSMutablePath?
-   
+    private var routeRealm: RealmTrackModel?
+    private var routePathRealm: RealmCoordinatesModel?
+    var newPath = [CLLocationCoordinate2D]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureLocationManager()
-       
+        
         
     }
     func configureMap(coordinate: CLLocationCoordinate2D){
@@ -62,18 +66,78 @@ class MapViewController: UIViewController {
         route?.strokeWidth = 7
         // Добавляем новую линию на карту
         route?.map = mapView
-        
+    }
+    private func loadRealmModel() {
+        guard let routeRealm = try? PathRepository.getPathData(RealmTrackModel.self).last else {
+            self.routeRealm = RealmTrackModel()
+            self.routeRealm?.id = 1
+            try? PathRepository.savePathData(items: [self.routeRealm!])
+            return
+        }
+        self.routeRealm = routeRealm
+    }
+    private func addRealmPoint(location: CLLocationCoordinate2D) {
+        let realmCoordinates = RealmCoordinatesModel()
+        realmCoordinates.latitude = location.latitude
+        realmCoordinates.longitude = location.longitude
+        guard let realm = try? Realm(configuration: .defaultConfiguration) else { return }
+        try! realm.write {
+            routeRealm?.locationPoints.append(realmCoordinates)
+        }
+    }
+    private func getRealmPath(completion: ([CLLocationCoordinate2D]?) -> Void){
+        guard let previosRoute = try? PathRepository.getPathData(RealmTrackModel.self).first else {
+            completion(nil)
+            return
+        }
+        var route: [CLLocationCoordinate2D] = []
+        previosRoute.locationPoints.forEach { point in
+            route.append(point.coordinate)
+        }
+        completion(route)
         
     }
+    
+    
+    
     @IBAction func newTrackAction(_ sender: UIBarButtonItem) {
         addLine()
         // отслеживание изменения местоположения устройства
         locationManager?.startUpdatingLocation()
+        
+        
     }
     
     @IBAction func stopTrackAction(_ sender: UIBarButtonItem) {
         locationManager?.stopUpdatingLocation()
+        try? PathRepository.clearDB()
+        loadRealmModel()
+        for element in newPath{
+            addRealmPoint(location: element)
+        }
+        newPath = []
     }
+    
+    @IBAction func lastTrackAction(_ sender: UIBarButtonItem) {
+        locationManager?.stopUpdatingLocation()
+        getRealmPath(){routeRealm in
+            var lastPath:[CLLocationCoordinate2D] = []
+            lastPath = routeRealm ?? []
+            addLine()
+            for coordinatePoint in lastPath{
+                routePath?.add(coordinatePoint)
+                newPath.append(coordinatePoint)
+                route?.path = routePath
+                // Чтобы наблюдать за движением, установим камеру на только что добавленную точку
+                configureMap(coordinate: coordinatePoint)
+                
+            }
+        }
+        
+    }
+    
+    
+    
 }
 
 extension MapViewController: CLLocationManagerDelegate {
@@ -82,6 +146,7 @@ extension MapViewController: CLLocationManagerDelegate {
         guard let location = locations.last else { return }
         // Добавляем её в путь маршрута
         routePath?.add(location.coordinate)
+        newPath.append(location.coordinate)
         // Обновляем путь у линии маршрута путём повторного присвоения
         route?.path = routePath
         // Чтобы наблюдать за движением, установим камеру на только что добавленную точку
