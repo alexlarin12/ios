@@ -18,9 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Настройка ключа
                 GMSServices.provideAPIKey("AIzaSyCMMBq9ah8XZVxza4xCtiAF-pNymihz8T0")
                 
-
-        
-        
         return true
     }
 
