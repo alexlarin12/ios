@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class UserViewController: UIViewController {
     let userRepository = UserRepository()
@@ -13,6 +15,8 @@ class UserViewController: UIViewController {
     @IBOutlet weak var loginTextField: UITextField!
     
     @IBOutlet weak var passwordTextField: UITextField!
+    
+    @IBOutlet weak var enterButton: UIButton!
     
     @IBAction func enterAction(_ sender: UIButton) {
         let login = loginTextField.text ?? ""
@@ -44,6 +48,7 @@ class UserViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureLoginBindings()
         textFieldState()
         addObservers()
     }
@@ -79,5 +84,26 @@ class UserViewController: UIViewController {
     @objc func showTextFields() {
         passwordTextField.backgroundColor = .white
         loginTextField.backgroundColor = .white
+    }
+    // Используем RxSwift
+    func configureLoginBindings() {
+        _ = Observable
+    // Объединяем два обсервера в один
+                .combineLatest(
+    // Обсервер изменения текста
+                    loginTextField.rx.text,
+    // Обсервер изменения текста
+                    passwordTextField.rx.text
+                )
+    // Модифицируем значения из двух обсерверов в один
+                .map { login, password in
+    // Если введены логин и пароль больше 3 символов, будет возвращено “истина”
+                    return !(login ?? "").isEmpty && (password ?? "").count >= 3
+                }
+    // Подписываемся на получение событий
+                .bind { [weak enterButton] inputFilled in
+    // Если событие означает успех, активируем кнопку, иначе деактивируем
+                    enterButton?.isEnabled = inputFilled
+            }
     }
 }

@@ -159,6 +159,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="MOo-re-QnI"/>
                     <connections>
+                        <outlet property="enterButton" destination="W1e-7x-41t" id="bmt-2b-PnF"/>
                         <outlet property="loginTextField" destination="Opg-LE-1bS" id="Omh-ee-cVB"/>
                         <outlet property="passwordTextField" destination="dI6-jd-HpS" id="avt-I1-PII"/>
                         <segue destination="MDn-xH-U0b" kind="show" identifier="onRecovery" id="Tgy-UQ-XEm"/>

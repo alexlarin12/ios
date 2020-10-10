@@ -10,6 +10,7 @@ import RealmSwift
 
 class PathRepository{
     static let deleteIfMigration = Realm.Configuration(deleteRealmIfMigrationNeeded: false)
+    
     // метод сохранения координат точки в Realm:
     static func savePathData<T: Object>(items: [T],
     configuration: Realm.Configuration = deleteIfMigration,

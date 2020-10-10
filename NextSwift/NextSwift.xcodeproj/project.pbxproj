@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -28,6 +28,7 @@
 		438ECDCF252A637400445143 /* RootSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438ECDCE252A637400445143 /* RootSegue.swift */; };
 		438ECDD8252A68BA00445143 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 438ECDD7252A68BA00445143 /* Launch.storyboard */; };
 		438ECDDD252A69DB00445143 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438ECDDC252A69DB00445143 /* LaunchViewController.swift */; };
+		438ECE06252FA0E100445143 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438ECE05252FA0E100445143 /* LocationManager.swift */; };
 		43B52B5B252374F2007B8FC3 /* RealmCoordinatesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B52B5A252374F2007B8FC3 /* RealmCoordinatesModel.swift */; };
 		43B52B632523750D007B8FC3 /* PathRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B52B622523750D007B8FC3 /* PathRepository.swift */; };
 		8B3BFC453235D21156E6A30E /* Pods_NextSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51DFB110983B509AB6195273 /* Pods_NextSwiftTests.framework */; };
@@ -82,6 +83,7 @@
 		438ECDCE252A637400445143 /* RootSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootSegue.swift; sourceTree = "<group>"; };
 		438ECDD7252A68BA00445143 /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		438ECDDC252A69DB00445143 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		438ECE05252FA0E100445143 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		43B52B5A252374F2007B8FC3 /* RealmCoordinatesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoordinatesModel.swift; sourceTree = "<group>"; };
 		43B52B622523750D007B8FC3 /* PathRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathRepository.swift; sourceTree = "<group>"; };
 		51DFB110983B509AB6195273 /* Pods_NextSwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NextSwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,6 +154,7 @@
 				438ECDB3252A431600445143 /* Storiboards */,
 				436B3284251D0BB40056B072 /* Assets.xcassets */,
 				436B3289251D0BB40056B072 /* Info.plist */,
+				438ECE05252FA0E100445143 /* LocationManager.swift */,
 			);
 			path = NextSwift;
 			sourceTree = "<group>";
@@ -442,19 +445,16 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-NextSwift-NextSwiftUITests/Pods-NextSwift-NextSwiftUITests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NextSwift-NextSwiftUITests/Pods-NextSwift-NextSwiftUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NextSwift-NextSwiftUITests/Pods-NextSwift-NextSwiftUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NextSwift-NextSwiftUITests/Pods-NextSwift-NextSwiftUITests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NextSwift-NextSwiftUITests/Pods-NextSwift-NextSwiftUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		59B70036A7B81F9B1A7A6DBF /* [CP] Copy Pods Resources */ = {
@@ -462,17 +462,16 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-NextSwift-NextSwiftUITests/Pods-NextSwift-NextSwiftUITests-resources.sh",
-				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NextSwift-NextSwiftUITests/Pods-NextSwift-NextSwiftUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NextSwift-NextSwiftUITests/Pods-NextSwift-NextSwiftUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NextSwift-NextSwiftUITests/Pods-NextSwift-NextSwiftUITests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NextSwift-NextSwiftUITests/Pods-NextSwift-NextSwiftUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9F9DF84AFC6C30F6081679AE /* [CP] Embed Pods Frameworks */ = {
@@ -480,19 +479,16 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-NextSwift/Pods-NextSwift-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NextSwift/Pods-NextSwift-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NextSwift/Pods-NextSwift-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NextSwift/Pods-NextSwift-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NextSwift/Pods-NextSwift-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B343366912FF4FE33B8D5773 /* [CP] Check Pods Manifest.lock */ = {
@@ -518,17 +514,16 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-NextSwift/Pods-NextSwift-resources.sh",
-				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NextSwift/Pods-NextSwift-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NextSwift/Pods-NextSwift-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NextSwift/Pods-NextSwift-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NextSwift/Pods-NextSwift-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -542,6 +537,7 @@
 				438ECDDD252A69DB00445143 /* LaunchViewController.swift in Sources */,
 				43B52B632523750D007B8FC3 /* PathRepository.swift in Sources */,
 				438ECD962527589600445143 /* RegistrationViewController.swift in Sources */,
+				438ECE06252FA0E100445143 /* LocationManager.swift in Sources */,
 				438ECDC5252A466F00445143 /* MainViewController.swift in Sources */,
 				43B52B5B252374F2007B8FC3 /* RealmCoordinatesModel.swift in Sources */,
 				438ECDCF252A637400445143 /* RootSegue.swift in Sources */,

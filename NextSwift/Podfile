@@ -6,6 +6,8 @@ target 'NextSwift' do
   use_frameworks!
 pod 'GoogleMaps'
 pod 'RealmSwift'
+pod 'RxSwift'
+pod 'RxCocoa'
 
   # Pods for NextSwift
 
