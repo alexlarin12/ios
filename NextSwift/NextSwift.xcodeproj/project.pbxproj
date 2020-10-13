@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3CDE3B6E9E6A396AC1EAFA4E /* Pods_NextSwift_NextSwiftUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EE3530341B8A6AE5B7F3522 /* Pods_NextSwift_NextSwiftUITests.framework */; };
+		435F72A22533197E00875F76 /* PathModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435F72A12533197E00875F76 /* PathModel.swift */; };
 		436B327C251D0BB20056B072 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436B327B251D0BB20056B072 /* AppDelegate.swift */; };
 		436B327E251D0BB20056B072 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436B327D251D0BB20056B072 /* SceneDelegate.swift */; };
 		436B3283251D0BB20056B072 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 436B3281251D0BB20056B072 /* Main.storyboard */; };
@@ -16,7 +17,6 @@
 		436B3293251D0BB40056B072 /* NextSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436B3292251D0BB40056B072 /* NextSwiftTests.swift */; };
 		436B329E251D0BB40056B072 /* NextSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436B329D251D0BB40056B072 /* NextSwiftUITests.swift */; };
 		436B32C2251FD6590056B072 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436B32C1251FD6590056B072 /* MapViewController.swift */; };
-		438ECD862523BF5400445143 /* RealmTrackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438ECD852523BF5400445143 /* RealmTrackModel.swift */; };
 		438ECD912527587700445143 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438ECD902527587700445143 /* UserViewController.swift */; };
 		438ECD962527589600445143 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438ECD952527589600445143 /* RegistrationViewController.swift */; };
 		438ECD9B25275FA000445143 /* RealmUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438ECD9A25275FA000445143 /* RealmUser.swift */; };
@@ -57,6 +57,7 @@
 		0EE3530341B8A6AE5B7F3522 /* Pods_NextSwift_NextSwiftUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NextSwift_NextSwiftUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21F4A8E94A2210BF0618DC1C /* Pods-NextSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NextSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-NextSwift/Pods-NextSwift.release.xcconfig"; sourceTree = "<group>"; };
 		38058931B5B75F4BFEA79D9A /* Pods-NextSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NextSwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NextSwiftTests/Pods-NextSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
+		435F72A12533197E00875F76 /* PathModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathModel.swift; sourceTree = "<group>"; };
 		436B3278251D0BB20056B072 /* NextSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NextSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		436B327B251D0BB20056B072 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		436B327D251D0BB20056B072 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,7 +72,6 @@
 		436B329D251D0BB40056B072 /* NextSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextSwiftUITests.swift; sourceTree = "<group>"; };
 		436B329F251D0BB40056B072 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		436B32C1251FD6590056B072 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		438ECD852523BF5400445143 /* RealmTrackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmTrackModel.swift; sourceTree = "<group>"; };
 		438ECD902527587700445143 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		438ECD952527589600445143 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		438ECD9A25275FA000445143 /* RealmUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUser.swift; sourceTree = "<group>"; };
@@ -181,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				438ECDA82527622200445143 /* UserModel.swift */,
+				435F72A12533197E00875F76 /* PathModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -240,7 +241,6 @@
 			isa = PBXGroup;
 			children = (
 				43B52B5A252374F2007B8FC3 /* RealmCoordinatesModel.swift */,
-				438ECD852523BF5400445143 /* RealmTrackModel.swift */,
 				438ECD9A25275FA000445143 /* RealmUser.swift */,
 			);
 			path = RealmModels;
@@ -541,13 +541,13 @@
 				438ECDC5252A466F00445143 /* MainViewController.swift in Sources */,
 				43B52B5B252374F2007B8FC3 /* RealmCoordinatesModel.swift in Sources */,
 				438ECDCF252A637400445143 /* RootSegue.swift in Sources */,
+				435F72A22533197E00875F76 /* PathModel.swift in Sources */,
 				436B327C251D0BB20056B072 /* AppDelegate.swift in Sources */,
 				438ECD9B25275FA000445143 /* RealmUser.swift in Sources */,
 				436B327E251D0BB20056B072 /* SceneDelegate.swift in Sources */,
 				438ECDCA252A587600445143 /* RecoveryPasswordViewController.swift in Sources */,
 				436B32C2251FD6590056B072 /* MapViewController.swift in Sources */,
 				438ECDA0252760DF00445143 /* UserRepository.swift in Sources */,
-				438ECD862523BF5400445143 /* RealmTrackModel.swift in Sources */,
 				438ECDA92527622200445143 /* UserModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
