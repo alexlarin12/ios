@@ -9,13 +9,16 @@ import UIKit
 import GoogleMaps
 import CoreLocation
 import RealmSwift
+import RxSwift
+
 
 class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: GMSMapView!
     
     // свойство для хранения CoreLocation менеджера
-    var locationManager: CLLocationManager?
+    //  var locationManager: CLLocationManager?
+    let locationManager = LocationManager.instance
     // свойство для хранения объекта пути:
     var route: GMSPolyline?
     // свойство для хранения пути:
@@ -35,24 +38,43 @@ class MapViewController: UIViewController {
         mapView.camera = camera
         mapView.animate(toLocation: coordinate)
     }
+    
     // создание CoreLocation менеджера и запрос к доступу к геопозиции
-    func configureLocationManager(){
-        locationManager = CLLocationManager()
-        // делегат для менеджера
-        locationManager?.delegate = self
-        // запрос разрешения на работу геолокации в фоне у пользователя
-        locationManager?.allowsBackgroundLocationUpdates = true
-        // чтобы слежение не останавливалось при остановке объекта:
-        locationManager?.pausesLocationUpdatesAutomatically = false
-        // запускать приложение при определённых изменениях местоположения:
-        locationManager?.startMonitoringSignificantLocationChanges()
-        // точность определения местоположения (лучшая):
-        locationManager?.desiredAccuracy = kCLLocationAccuracyBest
-        // запрос доступа к геопозиции только в момент использования приложения
-        //locationManager?.requestWhenInUseAuthorization()
-        // запрос доступа к геопозиции всегда
-        locationManager?.requestAlwaysAuthorization()
+    /*
+     func configureLocationManager(){
+     locationManager = CLLocationManager()
+     // делегат для менеджера
+     locationManager?.delegate = self
+     // запрос разрешения на работу геолокации в фоне у пользователя
+     locationManager?.allowsBackgroundLocationUpdates = true
+     // чтобы слежение не останавливалось при остановке объекта:
+     locationManager?.pausesLocationUpdatesAutomatically = false
+     // запускать приложение при определённых изменениях местоположения:
+     locationManager?.startMonitoringSignificantLocationChanges()
+     // точность определения местоположения (лучшая):
+     locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+     // запрос доступа к геопозиции только в момент использования приложения
+     //locationManager?.requestWhenInUseAuthorization()
+     // запрос доступа к геопозиции всегда
+     locationManager?.requestAlwaysAuthorization()
+     }*/
+    
+    func configureLocationManager() {
+        _ = locationManager
+            .location
+            .asObservable()
+            .bind { [weak self] location in
+                guard let location = location else { return }
+                self?.routePath?.add(location.coordinate)
+                // Обновляем путь у линии маршрута путём повторного присвоения
+                self?.route?.path = self?.routePath
+                
+                // Чтобы наблюдать за движением, установим камеру на только что добавленную точку
+                let position = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 17)
+                self?.mapView.animate(to: position)
+            }
     }
+    
     func addLine(){
         // Отвязываем от карты старую линию
         route?.map = nil
@@ -103,23 +125,30 @@ class MapViewController: UIViewController {
     @IBAction func newTrackAction(_ sender: UIBarButtonItem) {
         addLine()
         // отслеживание изменения местоположения устройства
-        locationManager?.startUpdatingLocation()
+        locationManager.startUpdatingLocation()
         
         
     }
     
     @IBAction func stopTrackAction(_ sender: UIBarButtonItem) {
-        locationManager?.stopUpdatingLocation()
+        locationManager.stopUpdatingLocation()
         try? PathRepository.clearDB()
         loadRealmModel()
-        for element in newPath{
-            addRealmPoint(location: element)
+        guard let routePath = routePath else { return }
+        // Цикл по всем точкам (координатам) маршрута.
+        for i in 0..<routePath.count(){
+            let coordinate = routePath.coordinate(at: i)
+            addRealmPoint(location: coordinate)
         }
-        newPath = []
+        /*
+         for element in newPath{
+         addRealmPoint(location: element)
+         }*/
     }
     
     @IBAction func lastTrackAction(_ sender: UIBarButtonItem) {
-        locationManager?.stopUpdatingLocation()
+        locationManager.stopUpdatingLocation()
+        
         getRealmPath(){routeRealm in
             var lastPath:[CLLocationCoordinate2D] = []
             lastPath = routeRealm ?? []
@@ -139,21 +168,22 @@ class MapViewController: UIViewController {
     
     
 }
-
-extension MapViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        // Берём последнюю точку из полученного набора
-        guard let location = locations.last else { return }
-        // Добавляем её в путь маршрута
-        routePath?.add(location.coordinate)
-        newPath.append(location.coordinate)
-        // Обновляем путь у линии маршрута путём повторного присвоения
-        route?.path = routePath
-        // Чтобы наблюдать за движением, установим камеру на только что добавленную точку
-        configureMap(coordinate: location.coordinate)
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
-    }
-}
+/*
+ extension MapViewController: CLLocationManagerDelegate {
+ func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+ // Берём последнюю точку из полученного набора
+ guard let location = locations.last else { return }
+ // Добавляем её в путь маршрута
+ routePath?.add(location.coordinate)
+ newPath.append(location.coordinate)
+ // Обновляем путь у линии маршрута путём повторного присвоения
+ route?.path = routePath
+ // Чтобы наблюдать за движением, установим камеру на только что добавленную точку
+ configureMap(coordinate: location.coordinate)
+ }
+ 
+ func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+ print(error)
+ }
+ }
+ */
