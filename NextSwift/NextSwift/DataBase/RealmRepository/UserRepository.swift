@@ -13,9 +13,11 @@ class UserRepository {
     // метод сохранения пользователя в Realm:
     func saveUserData(user: UserModel){
         do {
-            let realm = try Realm()
+            let config = Realm.Configuration(deleteRealmIfMigrationNeeded:false)
+            let realm = try Realm(configuration: config)
             var userToAdd = [RealmUser]()
             realm.beginWrite()
+            realm.deleteAll()
             let realmUser = RealmUser()
                 realmUser.login = user.login
                 realmUser.password = user.password

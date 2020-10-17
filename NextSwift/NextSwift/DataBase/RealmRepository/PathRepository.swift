@@ -7,33 +7,62 @@
 
 import Foundation
 import RealmSwift
+import CoreLocation
+import GoogleMaps
 
 class PathRepository{
-    static let deleteIfMigration = Realm.Configuration(deleteRealmIfMigrationNeeded: false)
-    
-    // метод сохранения координат точки в Realm:
-    static func savePathData<T: Object>(items: [T],
-    configuration: Realm.Configuration = deleteIfMigration,
-    update: Realm.UpdatePolicy = .modified) throws {
-        let realm = try Realm(configuration: configuration)
-        print(configuration.fileURL ?? "")
-        try realm.write {
-            realm.add(items, update: update)
+    // Сохранение маршрута в Realm.
+    func addLastRoute(routePath: [PathModel]) {
+        // Обработка исключений при работе с хранилищем.
+        do {
+            // Получаем доступ к хранилищу.
+            let config = Realm.Configuration(deleteRealmIfMigrationNeeded:false)
+            let realm = try Realm(configuration: config)
+            // Путь к хранилищу.
+            print(Realm.Configuration.defaultConfiguration.fileURL!)
+            
+            // Начинаем изменять хранилище.
+            realm.beginWrite()
+           // realm.deleteAll()
+            
+            var routePathToAdd = [RealmCoordinatesModel]()
+            // Цикл по всем точкам (координатам) маршрута.
+            routePath.forEach { routh in
+                let routhPathRealm = RealmCoordinatesModel()
+                routhPathRealm.latitude = routh.latitude
+                routhPathRealm.longitude = routh.longitude
+                routePathToAdd.append(routhPathRealm)
+              
+            }
+                // Кладем все объекты класса CLLocation в хранилище.
+            realm.add(routePathToAdd)
+            // Завершаем изменения хранилища.
+            try realm.commitWrite()
+        } catch {
+            // Если произошла ошибка, выводим ее в консоль.
+            print(error)
         }
     }
     
     // метод получения пути пользователя из Realm:
-    static func getPathData<T: Object>(_ type: T.Type,
-                               configuration: Realm.Configuration = deleteIfMigration) throws -> Results<T> {
-        print(configuration.fileURL ?? "")
-        let realm = try Realm(configuration: configuration)
-        return realm.objects(type)
+    func getPathData() throws -> Results<RealmCoordinatesModel> {
+        do{
+        let realm = try Realm()
+            return realm.objects(RealmCoordinatesModel.self)
+        }catch{
+            throw error
+        }
     }
     // метод очистки БД
-    static func clearDB(configuration: Realm.Configuration = deleteIfMigration) throws {
-        let realm = try Realm(configuration: configuration)
+    func clearDB(){
+        do{
+        let realm = try Realm()
         try realm.write {
             realm.deleteAll()
+        }
+            
+        }catch{
+            print(error)
         }
     }
 }
