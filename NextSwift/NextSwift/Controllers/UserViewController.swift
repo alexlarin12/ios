@@ -51,6 +51,7 @@ class UserViewController: UIViewController {
         configureLoginBindings()
         textFieldState()
         addObservers()
+       
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -79,7 +80,7 @@ class UserViewController: UIViewController {
     @objc func hideTextFields() {
         passwordTextField.backgroundColor = .black
         loginTextField.backgroundColor = .black
-    }
+   }
     // фон TextField - белый
     @objc func showTextFields() {
         passwordTextField.backgroundColor = .white
@@ -106,4 +107,5 @@ class UserViewController: UIViewController {
                     enterButton?.isEnabled = inputFilled
             }
     }
+    
 }
