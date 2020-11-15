@@ -7,6 +7,7 @@
 
 import Foundation
 import RealmSwift
+
 class UserRepository {
     var realmUsers = [RealmUser]()
     var realmUser = RealmUser()

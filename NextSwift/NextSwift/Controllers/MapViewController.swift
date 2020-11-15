@@ -31,8 +31,6 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureLocationManager()
-        
-        
     }
     func configureMap(coordinate: CLLocationCoordinate2D){
         let camera = GMSCameraPosition(target: coordinate, zoom: 15)
